@@ -4,7 +4,7 @@
 #include "Poppy.h"
 
 int main() {
-	Attacker::Attack* attack = Attacker::newAttack(Down);
+	Attacker::Attack* attack = Attacker::newAttack(Up);
 
 	Poppy::onCollision(attack);
 
