@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Attacker.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Poppy.h" />
   </ItemGroup>

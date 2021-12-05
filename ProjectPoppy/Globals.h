@@ -11,3 +11,4 @@ Direction flipDirection(Direction d) {
 
 #include "Attacker.h"
 #include "Poppy.h"
+#include "GameManager.h"
