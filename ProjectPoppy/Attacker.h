@@ -7,20 +7,22 @@ namespace Attacker {
 	{
 	public:
 		Attack() {}
-		Attack(float vel, int dmg, Direction dir, AttackType _type) : velocity(vel), damage(dmg), direction(dir), type(_type) {}
+		Attack(float rad,float dist, float vel, float dmg, Direction dir, AttackType _type) : radius(rad), distanceFromPoppy(dist), velocity(vel), damage(dmg), direction(dir), type(_type) {}
 		Direction direction;
 		AttackType type;
 		float velocity; // speed = distance/time ,, we will be able to calculate distance from poppy 
-		int damage;
+		float damage;
+		float distanceFromPoppy;
+		float radius;
 
 		void Clear() {
-			delete this;
+			//delete this;
 		}
 	private:
 	};
 
-	Attack* newAttack(float velocity = 10.f, int damage = 10, Direction direction = Direction::Down, AttackType type = Normal) {
-		Attack* attack = new Attack(velocity, damage, direction, type);
+	Attack* newAttack(float radius = 5.f, float distanceFromPoppy = 50.f, float velocity = 10.f, float damage = 10.f, Direction direction = Direction::Down, AttackType type = Normal) {
+		Attack* attack = new Attack(radius, distanceFromPoppy, velocity, damage, direction, type);
 
 		return attack;
 	}

@@ -6,13 +6,18 @@ namespace Poppy {
 	{
 	public:
 		Direction direction = Direction::Up;
-		int health = 100;
+		float health = 100;
+		float radius = 10.f;
 	}poppy;
 
 	// signals
 	void onCollision(Attacker::Attack* attack);
 	void onGuard(Attacker::Attack* attack);
 	void onDamage(Attacker::Attack* attack);
+
+	bool checkCollision(Attacker::Attack* attack) {
+		return attack->distanceFromPoppy < attack->radius + poppy.radius;
+	}
 
 	void guard(Attacker::Attack* attack) {
 #ifdef DEVSTAT
@@ -32,7 +37,7 @@ namespace Poppy {
 	}
 
 	// signals
-	void onCollision(Attacker::Attack* attack) {
+	void onCollision(Attacker::Attack* attack, std::vector<Attacker::Attack*> &attacks) {
 		if (flipDirection(attack->direction) == poppy.direction)
 			guard(attack);
 		else
