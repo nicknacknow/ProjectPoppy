@@ -13,7 +13,17 @@ std::vector<Attacker::Attack*> attacks;
 class GameManager {
 public:
 	void removeAttack(Attacker::Attack* attack) {
-		attacks.erase(std::remove(attacks.begin(), attacks.end(), attack), attacks.end());
+		//attacks.erase(std::remove(attacks.begin(), attacks.end(), attack), attacks.end());
+		
+		Attacker::Attack* first = attacks[0];
+		Attacker::Attack* att = first;
+		while (true) {
+			if (att->next == nullptr)break;
+			if (att->next == attack) {
+				att->next = att->next->next;
+			}
+			att = att->next;
+		}
 	}
 
 	void main() {
@@ -38,19 +48,19 @@ public:
 		input();
 		//printf("%d\n", Poppy::poppy.direction);
 		//printf("%f\n", dT);
+		//printf("%d\n", attacks.size());
 
 		for (Attacker::Attack* attack : attacks) // rlly need to fix this - removing and adding attacks to list. perhaps list? https://stackoverflow.com/questions/596162/can-you-remove-elements-from-a-stdlist-while-iterating-through-it
 		{
-			if ((int)attack < 0) continue; // stupid check because sometimes attack has already been deleted
-		//	printf("time left : %f\n", (attack->distanceFromPoppy - (attack->radius + Poppy::poppy.radius)) / attack->velocity);
+			//printf("time left : %f\n", (attack->distanceFromPoppy - (attack->radius + Poppy::poppy.radius)) / attack->velocity);
 			attack->distanceFromPoppy -= attack->velocity * dT;
 
-			printf(""); // for some reason this is needed to update the stuff ? not sure why - pretty unstable atm
+			//printf(""); // for some reason this is needed to update the stuff ? not sure why - pretty unstable atm
 
 			if (Poppy::checkCollision(attack)) {
-				printf("collision ! \n");
+				printf("collision ! %d\n", attacks.size());
 				Poppy::onCollision(attack, attacks);
-				//removeAttack(attack);
+				removeAttack(attack);
 			}
 		}
 		

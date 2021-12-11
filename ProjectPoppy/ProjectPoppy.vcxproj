@@ -145,6 +145,7 @@
     <ClInclude Include="Attacker.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="LinkedTable.h" />
     <ClInclude Include="Poppy.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

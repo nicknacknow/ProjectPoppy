@@ -14,6 +14,8 @@ namespace Attacker {
 		float damage;
 		float distanceFromPoppy;
 		float radius;
+		
+		Attack* next;
 
 		void Clear() {
 			//delete this;

@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 
-#define DEVSTAT
+//#define DEVSTAT
 
 enum Direction { Down, Up, Left, Right }; // describes direction of attack
 
